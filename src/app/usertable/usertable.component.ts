@@ -9,7 +9,7 @@ import { MatSort, MatSortable, MatTableDataSource } from '@angular/material';
   styleUrls: ['./usertable.component.css']
 })
 export class UsertableComponent implements OnInit {
-  
+  @ViewChild(MatSort) sort: MatSort;
   dataSource;
   displayColumns= ['name','username','email'];
   constructor(private userService: UserService) { }
@@ -21,6 +21,7 @@ export class UsertableComponent implements OnInit {
         return;
       }
     this.dataSource= new MatTableDataSource(result);
+    this.dataSource.sort= this.sort;
     });
   }
 
